@@ -1,0 +1,33 @@
+# Default: normalize all text files to LF in the repo
+* text=auto eol=lf
+
+# Explicitly mark common config/text files
+*.lua        text eol=lf
+*.vim        text eol=lf
+*.vimrc      text eol=lf
+*.json       text eol=lf
+*.jsonc      text eol=lf
+*.toml       text eol=lf
+*.yml        text eol=lf
+*.yaml       text eol=lf
+*.md         text eol=lf
+*.txt        text eol=lf
+*.sh         text eol=lf
+*.ps1        text eol=crlf
+*.bat        text eol=crlf
+*.cmd        text eol=crlf
+
+# Lock files
+*.lock       text eol=lf
+
+# Binary files (never touch line endings)
+*.png        binary
+*.jpg        binary
+*.jpeg       binary
+*.gif        binary
+*.ico        binary
+*.zip        binary
+*.gz         binary
+*.tar        binary
+*.7z         binary
+*.exe        binary
