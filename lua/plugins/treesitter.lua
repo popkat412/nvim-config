@@ -3,11 +3,10 @@
 ---@type LazySpec
 return {
   "nvim-treesitter/nvim-treesitter",
-  opts = {
-    ensure_installed = {
+  opts = function (_, opts)
+    opts.ensure_installed = {
       "bibtex",
       "c",
-      "cpp",
       "cpp",
       "css",
       "csv",
@@ -51,6 +50,6 @@ return {
       "vimdoc",
       "vue",
       "yaml",
-    },
-  },
+    }
+  end
 }
