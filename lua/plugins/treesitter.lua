@@ -34,7 +34,6 @@ return {
       "make",
       "markdown",
       "nginx",
-      "notes",
       "python",
       "scss",
       "sql",
