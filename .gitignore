@@ -1,9 +1,3 @@
-# Project gitignore
-coc-settings.json
-
-# Global gitignore
-# ----------------
-
 # Mac OS X
 .AppleDouble
 .DS_Store
