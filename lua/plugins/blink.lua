@@ -10,14 +10,41 @@ require("blink.cmp").setup({
     },
 
     -- ── Keymaps ────────────────────────────────────────────────────────────────
-    -- 'default' preset: C-y accept, C-n/C-p navigate, C-e dismiss, C-space open
-    -- 'super-tab': Tab/S-Tab navigate+accept (VSCode-style)
-    -- 'enter': Enter to accept
     keymap = {
-        preset = "super-tab",
-        -- You can add overrides on top of the preset:
-        ["<C-j>"] = { "select_next", "fallback" },
-        ["<C-k>"] = { "select_prev", "fallback" },
+        preset = "none",
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-e>"] = { "hide", "fallback" },
+
+        ["<Tab>"] = {
+            function(cmp)
+                if cmp.snippet_active() then
+                    return cmp.snippet_forward()
+                else
+                    return cmp.select_next()
+                end
+            end,
+            "fallback"
+        },
+        ["<S-Tab>"] = {
+            function(cmp)
+                if cmp.snippet_active() then
+                    return cmp.snippet_backward()
+                else
+                    return cmp.select_prev()
+                end
+            end,
+            "fallback"
+        },
+
+        ["<Enter>"] = { "accept", "fallback" },
+
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<C-j>"] = { "select_prev", "fallback_to_mappings" },
+        ["<C-k>"] = { "select_next", "fallback_to_mappings" },
+
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
     },
 
     -- ── Completion behaviour ───────────────────────────────────────────────────
@@ -28,6 +55,13 @@ require("blink.cmp").setup({
             show_on_trigger_character = true,
         },
 
+        list = {
+            auto_insert = false,
+            selection = {
+                preselect = function(ctx) return not require("blink.cmp").snippet_active({ direction = 1 }) end,
+            },
+        },
+
         -- Menu appearance
         menu = {
             auto_show = true,
@@ -35,7 +69,7 @@ require("blink.cmp").setup({
                 -- Show kind icon, label, and source name in the menu
                 columns = {
                     { "kind_icon" },
-                    { "label", "label_description", gap = 1 },
+                    { "label",      "label_description", gap = 1 },
                     { "source_name" },
                 },
             },
@@ -49,18 +83,6 @@ require("blink.cmp").setup({
 
         -- Ghost text: show the top completion inline as you type (like Copilot)
         ghost_text = { enabled = false },
-
-        -- Auto-insert brackets after accepting a function completion
-        accept = {
-            auto_brackets = { enabled = true },
-        },
-
-        list = {
-            selection = {
-                preselect = true, -- pre-highlight first item
-                auto_insert = false, -- don't insert until you explicitly accept
-            },
-        },
     },
 
     -- ── Signature help ─────────────────────────────────────────────────────────
