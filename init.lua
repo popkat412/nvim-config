@@ -1,12 +1,15 @@
 -- {{{ PLUGINS (using neovim's builtin package manager)
 vim.pack.add({
-    -- 'Basic' plugins
+    -- 'basic' plugins
     "https://github.com/tpope/vim-surround",
 
-    -- Treesitter
+    -- git
+    "https://github.com/lewis6991/gitsigns.nvim",
+
+    -- treesitter
     "https://github.com/nvim-treesitter/nvim-treesitter",
 
-    -- LSP related
+    -- lsp related
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/mason-org/mason.nvim",
     "https://github.com/mason-org/mason-lspconfig.nvim",
