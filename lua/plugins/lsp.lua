@@ -243,3 +243,8 @@ vim.lsp.config("jsonls", {
     },
 })
 -- }}}
+
+-- {{{ HASKELL
+-- hls is not installed with mason (installed with ghcup instead), so need to enable manually
+vim.lsp.enable("hls")
+-- }}}

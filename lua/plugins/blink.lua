@@ -23,7 +23,7 @@ require("blink.cmp").setup({
                     return cmp.select_next()
                 end
             end,
-            "fallback"
+            "fallback",
         },
         ["<S-Tab>"] = {
             function(cmp)
@@ -33,7 +33,7 @@ require("blink.cmp").setup({
                     return cmp.select_prev()
                 end
             end,
-            "fallback"
+            "fallback",
         },
 
         ["<Enter>"] = { "accept", "fallback" },
@@ -58,7 +58,8 @@ require("blink.cmp").setup({
         list = {
             auto_insert = false,
             selection = {
-                preselect = function(ctx) return not require("blink.cmp").snippet_active({ direction = 1 }) end,
+                -- preselect = function(ctx) return not require("blink.cmp").snippet_active({ direction = 1 }) end,
+                preselect = false,
             },
         },
 
@@ -69,7 +70,7 @@ require("blink.cmp").setup({
                 -- Show kind icon, label, and source name in the menu
                 columns = {
                     { "kind_icon" },
-                    { "label",      "label_description", gap = 1 },
+                    { "label", "label_description", gap = 1 },
                     { "source_name" },
                 },
             },

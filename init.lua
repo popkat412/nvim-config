@@ -35,6 +35,7 @@ vim.o.termguicolors = true -- Enable true colors
 vim.o.ignorecase = true -- Ignore case in search
 vim.o.swapfile = false -- Disable swap files
 vim.o.autoindent = true -- Enable auto indentation
+vim.o.smartindent = true
 vim.o.expandtab = true -- Use spaces instead of tabs
 vim.o.tabstop = 4 -- Number of spaces for a tab
 vim.o.softtabstop = 4 -- Number of spaces for a tab when editing
@@ -77,8 +78,10 @@ vim.g.everforest_background = "medium"
 vim.g.sonokai_style = "atlantis"
 -- pick a random one
 require("random-colorscheme").setup({
-    colorschemes = { "catppuccin-frappe", "everforest", "sonokai", "nord" },
+    -- colorschemes = { "catppuccin-frappe", "everforest", "sonokai", "nord" },
+    colorschemes = { "sonokai" },
 })
+
 -- }}}
 
 -- {{{ KEYMAPS
