@@ -24,6 +24,7 @@ vim.pack.add({
 
     -- small plugins
     "https://github.com/NMAC427/guess-indent.nvim",
+    "https://github.com/mrjones2014/smart-splits.nvim",
 })
 -- }}}
 
@@ -126,6 +127,7 @@ require("plugins.treesitter")
 require("plugins.lsp")
 require("plugins.blink")
 require("plugins.snacks")
+require("plugins.smart-splits")
 
 -- small plugins
 require("guess-indent").setup({})

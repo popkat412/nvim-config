@@ -1,24 +1,33 @@
 -- mason, mason-lspconfig to auto install tooling
-require("mason").setup()
 
-require("mason-lspconfig").setup({
-    ensure_installed = {
-        "lua_ls",
+local lspconfig_ensure_installed = {
+    "lua_ls",
 
-        -- web dev bullshit
-        "ts_ls",
-        "astro",
-        "svelte",
-        "vue_ls",
-        "html",
-        "jsonls",
-        "emmet_ls",
-        "cssls",
-        "tailwindcss",
-        "biome", -- linter + formatter, replces prettier & eslint
-    },
-})
--- no need to vim.lsp.enable() since mason-lspconfig does it automatically
+    "nil_ls",
+
+    -- web dev bullshit
+    "ts_ls",
+    "astro",
+    "svelte",
+    "vue_ls",
+    "html",
+    "jsonls",
+    "emmet_ls",
+    "cssls",
+    "tailwindcss",
+    "biome", -- linter + formatter, replces prettier & eslint
+}
+
+-- only use mason on non-nixos, on nixos we install the packages using nix itself
+local is_nixos = vim.fn.filereadable("/etc/NIXOS") == 1
+if not is_nixos then
+    require("mason").setup()
+    require("mason-lspconfig").setup({ ensure_installed = mason_list, })
+    -- no need to vim.lsp.enable() since mason-lspconfig does it automatically
+else
+    -- manually enable the lsps
+    vim.lsp.enable(lspconfig_ensure_installed)
+end
 
 -- {{{ GLOBAL LSP SETTINGS
 vim.diagnostic.config({
